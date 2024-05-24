@@ -11,6 +11,7 @@
   --color-gray-500: hsl(220, 20%, 10%, 50%);
   --color-gray-700: #252542;
   --color-gray-900: #0c0c22;
+  --color-gradient: #223466;
 
   --color-bg: hwb(240 95% 0%);
 
@@ -171,6 +172,63 @@ nav {
   height: 100%;
 }
 
+.nav__profile-img {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 50%;
+}
+
+.nav__menu li a {
+  display: flex;
+  flex-direction: row;
+  /* border: 2px solid red; */
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+/* Tooltip container */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip-text {
+  visibility: hidden;
+  width: 120px; /* Adjust the width as needed */
+  background-color: rgba(0, 0, 0, 0.441);
+  color: #fff;
+  text-align: center;
+  border-radius: 5px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 125%; /* Position the tooltip above the image */
+  left: 50%;
+  margin-left: -60px; /* Center the tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  bottom: 100%; /* At the bottom of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.441) transparent transparent transparent;
+  transform: rotate(180deg);
+}
+
+/* Show the tooltip text when hovering over the tooltip container */
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 .nav__logo {
   width: 3rem;
   display: block;
@@ -192,7 +250,7 @@ nav {
 /*=========================================== FOOTER ===========================================*/
 footer {
   background: var(--color-gray-900);
-  margin-top: 6rem;
+  margin-top: 10rem;
   padding-top: 6rem;
 }
 
@@ -230,7 +288,84 @@ footer {
 
 
 
-/*=========================================== HOME ===========================================*/
+/*=========================================== LANDING PAGE ===========================================*/
+.landing__page {
+  display: flex;
+  margin-top: 6rem;
+  flex-direction: row;
+  overflow: hidden;
+  /* border: 2px solid green; */
+}
+
+.pattern {
+  background-color: transparent;
+  opacity: 0.8;
+  background-image: radial-gradient(#028dc4 0.6px, #e5e5f700 0.6px);
+  background-size: 25px 25px;
+}
+
+.landing__page-container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.hero__install-images {
+  display: flex;
+  flex-direction: row;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-left: -16rem;
+}
+
+.cursor-example {
+  position: fixed;
+  top: 100;
+  left: 100;
+  width: 500px;
+  height: 500px;
+  border-radius: 100%;
+  background: rgba(111, 208, 211, 0.736);
+  z-index: -2;
+  filter: blur(100px);
+  opacity: 0.5;
+}
+
+.hero__text {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.hero__text h1 {
+  font-size: 72px;
+  line-height: 4.8rem;
+}
+
+.hero__text span {
+  background: linear-gradient(to right, #f97351 0%, #ff8a63 25%, #de9069 50%, #e9a071 75%, #e9a46f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__image img{
+  width: 630px;
+}
+
+
+
+
+
+
+
+
+
+
 /*=========================================== POSTS ===========================================*/
 .posts__container {
   display: grid;
@@ -257,7 +392,7 @@ footer {
 .post__thumbnail {
   border-radius: var(--radius-3);
   overflow: hidden; 
-  max-height: 16rem;
+  height: 16rem;
 }
 
 .post__thumbnail img {
@@ -364,6 +499,12 @@ input, select, textarea {
   place-items: center;
 }
 
+.login .container, .register .container {
+  padding: 50px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-radius: var(--radius-3);
+}
+
 .register h2, .login h2, .create-post h2 {
   margin-bottom: 2rem;
 }
@@ -380,10 +521,28 @@ input, select, textarea {
 
 /* Custom style for ReactQuill */
 .ql-editor {
-  overflow: scroll;
+  /* overflow: scroll; */
   background: var(--color-white);
   height: 10rem !important;
+  max-width: 38rem;
+  height: 300px !important;
+  font-family: 'Poppins', sans-serif !important;
+  font-size: 1em !important;
+  color: #333 !important;
 }
+
+.ql-toolbar {
+  background-color: #f1f1f1 !important;
+  border-top-left-radius: 10px !important;
+  border-top-right-radius: 10px !important;
+}
+
+.ql-container {
+  border-bottom-left-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+
 
 
 
@@ -514,6 +673,259 @@ input, select, textarea {
 
 
 
+
+
+
+
+
+/*=========================================== ABOUT ===========================================*/
+.about {
+  overflow: hidden;
+}
+
+.about-heading h1{
+  text-align: center;
+  color: #f97351
+}
+
+.about-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  margin: 4rem auto;
+  gap: 4rem;
+}
+
+.about-content {
+  flex: 1;
+  text-align: justify;
+}
+
+.about-content h2{
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.about-content p {
+  font-size: 24px;
+ line-height: 1.5;
+ color: #666;
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: var(--radius-3);
+}
+
+
+
+
+
+
+
+
+
+
+
+/*=========================================== DONATE ===========================================*/
+.donation__container {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  background-color: #fff;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 2s ease-in-out;
+}
+
+.donation__title {
+  color: #ff5e62;
+  margin-bottom: 20px;
+  animation: 1s ease-out forwards;
+}
+
+.donation__description {
+  font-size: 1.2rem;
+  color: #333;
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.wallet {
+  margin-top: 20px;
+  animation: 1s ease-out forwards;
+}
+
+.wallet-label {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.wallet-address {
+  font-size: 1rem;
+  color: #222;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.copy-button {
+  background: #ff5e62;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.copy-button:hover {
+  background: #ff9966;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=========================================== CONTACT ===========================================*/
+/* custom-phone-input.css */
+.phone-input-container {
+  width: 100% !important;
+  max-width: 400px !important;
+  margin: 0 auto !important;
+  border: 2px solid #ccc !important;
+  border-radius: 5px !important;
+  padding: 10px !important;
+  background-color: #f9f9f9 !important;
+}
+
+.react-tel-input .form-control {
+  width: 100% !important;
+  padding: 12px !important;
+  border: none !important;
+  border-radius: 5px !important;
+  font-size: 16px !important;
+}
+
+.react-tel-input .flag-dropdown {
+  border: none !important;
+  background: none !important;
+}
+
+.react-tel-input .flag-dropdown:hover {
+  background: var(--color-white) !important;
+}
+
+.react-tel-input .selected-flag {
+  padding: 5px !important;
+}
+
+.react-tel-input .country-list {
+  max-height: 150px !important;
+  overflow-y: scroll !important;
+  border: 1px solid #ccc !important;
+}
+
+.react-tel-input .country-list .country {
+  padding: 8px 10px !important;
+}
+
+.react-tel-input .country-list .country:hover {
+  background-color: #f0f0f0 !important;
+}
+
+.react-tel-input .country-list .country .dial-code {
+  color: #888 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=========================================== PRIVACY ===========================================*/
+.privacy__container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 800px;
+  background-color: rgb(255,242,240);
+  padding: 30px 50px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.privacy__container h1 {
+  color: #ff5e62;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  border-bottom: 2px solid #ff5e62;
+  padding-bottom: 10px;
+}
+.privacy__container p {
+  line-height: 1.8;
+  text-align: justify;
+  margin: 20px 0;
+  font-size: 1.1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*=========================================== LOADER ===========================================*/
 .loader {
   position: fixed;
@@ -530,12 +942,6 @@ input, select, textarea {
   width: 4.5rem;
   aspect-ratio: 1/1;
 }
-
-
-
-
-
-
 
 
 
@@ -602,6 +1008,10 @@ input, select, textarea {
     animation-delay: 1200ms;
   }
 
+  .nav__menu li:nth-child(6) {
+    animation-delay: 1500ms;
+  }
+
   .nav__menu li a {
     display: block;
     background: var(--color-white);
@@ -615,6 +1025,31 @@ input, select, textarea {
     cursor: pointer;
   }
 
+  /* LANDING PAGE */
+  .landing__page {
+    height: calc(100vh - 22rem);
+  }
+
+  .landing__page-container {
+    max-width: max-content;
+  }
+
+  .hero__install-images {
+    margin: 0;
+  }
+
+  .cursor-example {
+    display: none;
+  }
+
+  .hero__text h1 {
+    font-size: 38px;
+    line-height: 3rem;
+  }
+
+  .hero__image {
+    display: none;
+  }
 
   /* HOME */
   .posts__container {
@@ -661,5 +1096,15 @@ input, select, textarea {
 
   .dashboard__post-thumbnail {
     width: 5rem;
+  }
+
+  .about-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* DONATION */
+  .wallet-address {
+    font-size: 0.74rem;
   }
 }

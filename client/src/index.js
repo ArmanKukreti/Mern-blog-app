@@ -4,7 +4,6 @@ import './index.css';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Layout from './Components/Layout';
 import ErrorPage from './pages/ErrorPage';
-import Home from './pages/Home';
 import PostDetail from './pages/PostDetail';
 import Login from './pages/Login';
 import UserProfile from './pages/UserProfile';
@@ -17,6 +16,11 @@ import CategoryPosts from './pages/CategoryPosts';
 import Contact from './pages/Contact';
 import Register from './pages/Register';
 import UserProvider from './context/userContext';
+import Landing from './pages/Landing';
+import Home from './pages/Home';
+import About from './pages/About';
+import Privacy from './pages/Privacy';
+import Donation from './pages/Donation';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +28,10 @@ const router = createBrowserRouter([
     element: <UserProvider><Layout/></UserProvider>,
     errorElement: <ErrorPage/>,
     children: [
-      {index:true, element: <Home/>},
+      {index:true, element: <Landing/>},
+      {path: 'home', element: <Home/>},
+      {path: 'about', element: <About/>},
+      {path: 'privacy-policy', element: <Privacy/>},
       {path: 'posts/:id', element:<PostDetail/>},
       {path: 'register', element:<Register/>},
       {path: 'login', element:<Login/>},
@@ -34,6 +41,8 @@ const router = createBrowserRouter([
       {path: 'myposts/:id', element:<Dashboard/>},
       {path: 'posts/:id/edit', element:<EditPost/>},
       {path: 'posts/:id/delete', element:<DeletePost/>},
+      {path: 'about', element: <About/>},
+      {path: 'donate', element:<Donation/>},
       {path: 'contact', element:<Contact/>},
       {path: 'logout', element:<Logout/>}
     ]

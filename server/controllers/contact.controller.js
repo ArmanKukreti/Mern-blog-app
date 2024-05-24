@@ -28,7 +28,7 @@ export const postContactData = async(req, res) => {
             return res.status(422).json({error: "Fill all the fields."})
         }
 
-        if(phone.length != 10) {
+        if(phone.length <= 10) {
             return res.status(422).json({error: "Please enter valid phone number"})
         }
 
@@ -77,15 +77,17 @@ export const postContactData = async(req, res) => {
 
         const mailOptions = {
             from: process.env.SMTP_MAIL,
-            to: category === 'Inquiry' ? "ayushpkukreti@gmail.com" : "armankukreti@gmail.com",
+            to: "ayushpkukreti@gmail.com",
             subject: "User query details from blog app",
             html: `<p>Name: ${name}</p><p>Email: ${newEmail}</p><p>Phone: ${phone}</p><p>Category: ${category}</p><p>Query: ${query}</p>`,
-            attachments: [
-                {
-                    filename: newFileName,
-                    path: path.join(__dirname, '..', 'uploads', newFileName)
-                }
-            ]
+            ...(newFileName && {
+                attachments: [
+                    {
+                        filename: newFileName,
+                        path: path.join(__dirname, '..', 'uploads', newFileName)
+                    }
+                ]
+            })
         };
 
         transporter.sendMail(mailOptions, (error) => {

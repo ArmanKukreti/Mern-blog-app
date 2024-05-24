@@ -16,7 +16,7 @@ const contactSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ["Inquiry", "Sales"]
+        enum: ["General inquires", "Blog Posting", "New listing", "Advertisement", "Business proposal", "Other topic"]
     },
     query: {
         type: String,

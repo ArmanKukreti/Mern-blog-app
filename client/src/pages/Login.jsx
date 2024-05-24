@@ -29,7 +29,7 @@ const Login = () => {
       });
       const user = await response.data;
       setCurrentUser(user)
-      navigate('/');
+      navigate('/home');
 
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {

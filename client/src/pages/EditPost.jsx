@@ -42,7 +42,7 @@ const EditPost = () => {
     'link', 'image'
   ]
 
-  const POST_CATEGORIES = ["Agriculture", "Business", "Education", "Entertainment", "Art", "Investment", "Uncategorized", "Weather"]
+  const POST_CATEGORIES = ["News",  "NFTs",  "Research",  "Lunching pool", "Airdrop", "Ventures", "Market updates", "Tips and Tutorials", "Earn free crypto", "Web3"]
 
 
   useEffect(() => {
@@ -81,7 +81,7 @@ const EditPost = () => {
         withCredentials: true
       })
       if (response.status == 200) {
-        return navigate('/')
+        return navigate('/home')
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {

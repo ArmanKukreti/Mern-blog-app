@@ -13,7 +13,7 @@ const postSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true,
-        enum: ["Agriculture", "Business", "Education", "Entertainment", "Art", "Investment", "Uncategorized", "Weather"]
+        enum: ["News",  "NFTs",  "Research",  "Lunching pool", "Airdrop", "Ventures", "Market updates", "Tips and Tutorials", "Earn free crypto", "Web3"]
     },
     description: {
         type: String,

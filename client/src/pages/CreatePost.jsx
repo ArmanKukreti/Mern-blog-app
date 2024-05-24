@@ -5,9 +5,10 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/userContext'
 
+
 const CreatePost = () => {
   const [title, setTitle] = useState('')
-  const [category, setCategory] = useState('Uncategorized')
+  const [category, setCategory] = useState('News')
   const [description, setDescription] = useState('')
   const [thumbnail, setThumbnail] = useState('')
   const [error, setError] = useState('')
@@ -20,6 +21,25 @@ const CreatePost = () => {
       navigate('/login')
     }
   }, [currentUser, navigate])
+
+  const modules = {
+    toolbar: [
+      [{'header': [1, 2, 3, 4, 5, 6, false]}],
+      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+      [{'list': 'ordered'}, {'list': 'bullet'}, {'indent': '-1'}, {'indent': '+1'}],
+      ['link', 'image'],
+      [{"code-block": true}],
+      ['clean']
+    ]
+  }
+
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike', 'blockquote',
+    'list', 'bullet', 'indent',
+    'link', 'image', 
+    'code-block',
+  ]
 
   const createPost = async (e) => {
     e.preventDefault()
@@ -35,7 +55,7 @@ const CreatePost = () => {
         withCredentials: true
       })
       if (response.status == 201) {
-        return navigate('/')
+        return navigate('/home')
       }
     } catch (error) {
       if (error.response && error.response.data && error.response.data.error) {
@@ -54,17 +74,19 @@ const CreatePost = () => {
         <form className="form create-post__form" onSubmit={createPost}>
           <input type="text" placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} autoFocus />
           <select name="category" value={category} onChange={e => setCategory(e.target.value)}>
-            <option value="Uncategorized">Uncategorized</option>
-            <option value="Agriculture">Agriculture</option>
-            <option value="Business">Business</option>
-            <option value="Education">Education</option>
-            <option value="Entertainment">Entertainment</option>
-            <option value="Art">Art</option>
-            <option value="Investment">Investment</option>
-            <option value="Weather">Weather</option>
+            <option value="News">News</option>
+            <option value="NFTs">NFTs</option>
+            <option value="Research">Research</option>
+            <option value="Lunching pool">Lunching pool</option>
+            <option value="Airdrop">Airdrop</option>
+            <option value="Ventures">Ventures</option>
+            <option value="Market updates">Market updates</option>
+            <option value="Tips and Tutorials">Tips and Tutorials</option>
+            <option value="Earn free crypto">Earn free crypto</option>
+            <option value="Web3">Web3</option>
           </select>
 
-          <ReactQuill value={description} onChange={setDescription} />
+          <ReactQuill modules={modules} formats={formats} value={description} onChange={setDescription} />
 
           <input type="file" onChange={e => setThumbnail(e.target.files[0])} accept='image/*' />
 
