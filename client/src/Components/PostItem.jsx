@@ -16,8 +16,14 @@ const defaultOptions = {
 }
 
 const PostItem = ({postID, thumbnail, category, title, desc, authorID, createdAt}) => {
-    const shortDesc = desc.length > 145 ? desc.substr(0, 145) + '...' : desc;
-    const shortTitle = desc.length > 30 ? title.substr(0, 30) + '...' : title;
+    let shortDesc = desc.length > 100 ? desc.substr(0, 100) + '...' : desc;
+    const shortTitle = title.length > 30 ? title.substr(0, 30) + '...' : title;
+
+    const stripHtml = (html) => {
+        return html.replace(/<\/?[^>]+(>|$)/g, "");
+      };
+
+    shortDesc = stripHtml(shortDesc)
 
   return (
     <Tilt options={defaultOptions}>
@@ -27,7 +33,7 @@ const PostItem = ({postID, thumbnail, category, title, desc, authorID, createdAt
         </div>
         <div className="post__content">
             <Link to={`/posts/${postID}`}>
-                <h3>{shortTitle}</h3>
+                <h1>{shortTitle}</h1>
             </Link>
             <p dangerouslySetInnerHTML={{__html: shortDesc}}></p>
             <div className="post__footer">

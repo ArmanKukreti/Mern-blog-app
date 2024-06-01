@@ -82,7 +82,7 @@ const Landing = () => {
             <span>
               GENERATION
             </span><br/>{" "}
-            BLOGGING APP.
+            CRYPTO APP.
           </h1>
         </div>
 

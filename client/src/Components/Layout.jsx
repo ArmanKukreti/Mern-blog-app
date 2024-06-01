@@ -5,13 +5,13 @@ import Footer from './Footer'
 
 const Layout = () => {
   const location = useLocation();
-  const isLandingPage = location.pathname === '/';
+  const noFooter = location.pathname === '/' || location.pathname === '/about'|| location.pathname === '/contact'|| location.pathname === '/warning'|| location.pathname === '/donate';
 
   return (
     <>
       <Header/>
         <Outlet/>
-      {!isLandingPage && <Footer />}
+      {!noFooter && <Footer />}
     </>
   )
 }

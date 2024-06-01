@@ -21,6 +21,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Privacy from './pages/Privacy';
 import Donation from './pages/Donation';
+import Warning from './pages/Warning';
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
       {path: 'about', element: <About/>},
       {path: 'donate', element:<Donation/>},
       {path: 'contact', element:<Contact/>},
+      {path: 'warning', element:<Warning/>},
       {path: 'logout', element:<Logout/>}
     ]
   }

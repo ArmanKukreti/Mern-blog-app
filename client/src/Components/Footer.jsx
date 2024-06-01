@@ -18,7 +18,8 @@ const Footer = () => {
       </ul>
 
       <div className="footer__copyright">
-        <small>All Rights Reserved &copy; Copyright, Arman Kukreti.</small>
+        <Link to={'/login'} style={{color: 'white'}}>Admin Login</Link>
+        <small>All Rights Reserved &copy; Copyright, The Crypto Trades.</small>
       </div>
     </footer>
   )

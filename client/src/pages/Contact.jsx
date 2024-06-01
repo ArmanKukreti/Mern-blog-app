@@ -32,7 +32,7 @@ const Contact = () => {
         try {
           const response = await axios.post(`/api/contact/`, postData, {withCredentials: true})
 
-          if(response.status == 201) {
+          if(response.status === 201) {
             navigate(0)
           }
 
@@ -47,9 +47,10 @@ const Contact = () => {
 
     
       return (
-        <section className="login">
+        <section className="contact">
           <div className="container">
             <h2>Contact Us</h2>
+            <p>We'd love to hear from you! Whether you have questions, feedback, or need support, feel free to reach out to us.</p>
             <form className="form login__form" onSubmit={handleSubmit}>
               {error && <p className="form__error-message">{error}</p>}
               <input type="text" name="name" placeholder='Full Name' value={name} onChange={(e) => setName(e.target.value)} autoFocus/>

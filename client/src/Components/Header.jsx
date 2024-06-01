@@ -25,7 +25,7 @@ const Header = () => {
     <nav>
       <div className="container nav__container">
         <Link to="/" className="nav__logo" onClick={closeNavHandler}>
-          <img style={{width: '200px'}} src={Logo} alt="Logo" />
+          <img style={{width: '120px'}} src={Logo} alt="Logo" />
         </Link>
         {currentUser && isNavShowing && (
           <ul className="nav__menu">
@@ -83,7 +83,7 @@ const Header = () => {
           <ul className="nav__menu">
             <li>
               <Link to="/home" onClick={closeNavHandler}>
-                All posts
+                Blogs
               </Link>
             </li>
             <li>
@@ -98,17 +98,22 @@ const Header = () => {
             </li>
             <li>
               <Link to="/login" onClick={closeNavHandler}>
-                Author Login
+                Login
               </Link>
             </li>
             <li>
               <Link to="/donate" onClick={closeNavHandler}>
-                Donate
+                Donation
               </Link>
             </li>
             <li>
               <Link to="/contact" onClick={closeNavHandler}>
                 Contact
+              </Link>
+            </li>
+            <li>
+              <Link to="/warning" onClick={closeNavHandler}>
+                Warning
               </Link>
             </li>
           </ul>
