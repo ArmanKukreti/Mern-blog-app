@@ -1,6 +1,7 @@
 {
-  "name": "The Crypto Trades",
+  "name": "The Crypto Traders",
   "version": "0.1.0",
+  "homepage": "https://thecryptotrades.digital",
   "proxy": "http://localhost:5000",
   "private": true,
   "dependencies": {

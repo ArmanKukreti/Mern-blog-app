@@ -25,7 +25,7 @@ const Header = () => {
     <nav>
       <div className="container nav__container">
         <Link to="/" className="nav__logo" onClick={closeNavHandler}>
-          <img style={{width: '120px'}} src={Logo} alt="Logo" />
+          <img style={{width: '100px'}} src={Logo} alt="Logo" />
         </Link>
         {currentUser && isNavShowing && (
           <ul className="nav__menu">

@@ -86,7 +86,7 @@ img {
 }
 
 section {
-  margin-top: 6rem; 
+  margin-top: 8rem; 
 }
 
 .container {
@@ -153,7 +153,7 @@ section {
 /*=========================================== NAVBAR ===========================================*/
 nav {
   width: 100vw;
-  height: 5rem;
+  height: 6rem;
   display: grid;
   place-items: center;
   background: var(255, 255, 255, 0.5);
@@ -163,6 +163,7 @@ nav {
   z-index: 1;
   border-bottom: 4px solid var(--color-bg);
   backdrop-filter: blur(20px);
+  padding: .5rem;
 }
 
 .nav__container {
@@ -371,6 +372,7 @@ footer {
 
 /*=========================================== POSTS ===========================================*/
 .posts__container {
+  /* margin-top: 9rem; */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 4rem;
@@ -400,6 +402,7 @@ footer {
 
 .post__thumbnail img {
   border-radius: var(--radius-3);
+  height: 16rem;
 } 
 
 .post__content {
@@ -437,7 +440,7 @@ footer {
 
 /*=========================================== POST DETAIL ===========================================*/
 .post-detail {
-  /* width: var(--form-width); */
+  width: 90%;
   background: var(--color-white);
   margin-inline: auto;
   padding: 2rem 0;
@@ -534,7 +537,7 @@ input, select, textarea {
   /* overflow: scroll; */
   background: var(--color-white);
   height: 10rem !important;
-  max-width: 38rem;
+  max-width: 100%;
   height: 300px !important;
   font-family: 'Poppins', sans-serif !important;
   font-size: 1em !important;
@@ -545,11 +548,13 @@ input, select, textarea {
   background-color: #f1f1f1 !important;
   border-top-left-radius: 10px !important;
   border-top-right-radius: 10px !important;
+  max-width: 39rem;
 }
 
 .ql-container {
   border-bottom-left-radius: 10px !important;
   border-bottom-right-radius: 10px !important;
+  max-width: 39rem;
 }
 
 

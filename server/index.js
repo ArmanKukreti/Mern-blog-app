@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 5000
 
 app.use(express.json()); //to parse req.body
 app.use(express.urlencoded({extended: true})) //to parse form data
-app.use(cors({credentials: true, origin: "http://localhost:3000"}))
+app.use(cors({credentials: true, /*origin: "http://localhost:3000"*/}))
 app.use(upload())
 app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use(cookieParser())
