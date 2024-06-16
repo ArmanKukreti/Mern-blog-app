@@ -23,7 +23,12 @@ const contactSchema = new mongoose.Schema({
         required: true,
     },
     attachment: {
-        type: String
+        url: {
+            type: String,
+        },
+        public_id: {
+            type: String,
+        }
     }
 })
 

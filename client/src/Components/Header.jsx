@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaBars } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
-import Logo from '../images/Logo.png'
+import Logo from "../images/Logo.png";
 
 import { UserContext } from "../context/userContext";
 
@@ -25,7 +25,7 @@ const Header = () => {
     <nav>
       <div className="container nav__container">
         <Link to="/" className="nav__logo" onClick={closeNavHandler}>
-          <img style={{width: '100px'}} src={Logo} alt="Logo" />
+          <img style={{ width: "100px" }} src={Logo} alt="Logo" />
         </Link>
         {currentUser && isNavShowing && (
           <ul className="nav__menu">
@@ -60,18 +60,18 @@ const Header = () => {
                 onClick={closeNavHandler}
               >
                 <div className="tooltip-container">
-                  {currentUser?.avatar && (
+
+                  {currentUser?.avatar ? (
                     <img
-                      src={`/uploads/${currentUser?.avatar}`}
+                      src={currentUser.avatar.url}
                       className="nav__profile-img"
                       alt="Profile Img"
                     />
+                  ) : (
+                    <span className="nav__profile-name">
+                      {currentUser.name}
+                    </span>
                   )}
-
-                  {!currentUser.avatar && (
-                    currentUser.name
-                  )}
-
                   <span className="tooltip-text">View Profile</span>
                 </div>
               </Link>

@@ -29,7 +29,7 @@ const PostItem = ({postID, thumbnail, category, title, desc, authorID, createdAt
     <Tilt options={defaultOptions}>
     <article className="post">
         <div className="post__thumbnail">
-            <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${thumbnail}`} alt="Thumbnail" />
+            <img src={`${thumbnail.url}`} alt="Thumbnail" />
         </div>
         <div className="post__content">
             <Link to={`/posts/${postID}`}>

@@ -93,7 +93,7 @@ const UserProfile = () => {
         <div className="profile__details">
           <div className="avatar__wrapper">
             <div className="profile__avatar">
-              <img src={`/uploads/${avatar}`} alt="Avatar" />
+              {currentUser.avatar && <img src={currentUser.avatar.url} alt="Avatar" />}
             </div>
             {/* Form to updata Avatar */}
             <form className='avatar__form'>

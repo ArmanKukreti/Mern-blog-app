@@ -11,6 +11,7 @@ TimeAgo.addLocale(enIN)
 
 const PostAuthor = ({authorID, createdAt}) => {
   const [author, setAuthor] = useState('')
+  let avatarUrl = ''
 
   useEffect(() => {
     const getAuthor = async() => {
@@ -28,7 +29,7 @@ const PostAuthor = ({authorID, createdAt}) => {
   return (
     <div className='post__author'>
         <div className="post__author-avatar">
-            <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${author?.avatar}`} alt="Avatar" />
+          {author?.avatar && <img src={author.avatar.url} alt="Avatar" />}
         </div>
         <div className="post__author-details">
             <h5>By: {author?.name}</h5>

@@ -5,13 +5,24 @@ import fs from 'fs'
 import { dirname } from 'path';
 import { v4 as uuid } from 'uuid';
 import dotenv from 'dotenv'
+import { v2 as cloudinary } from "cloudinary";
+import { Readable } from 'stream';
 dotenv.config()
+
+
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
 import User from "../models/user.model.js"
 import { generateTokenAndSetCookie } from '../lib/utils/generateToken.js';
+import { DiffieHellmanGroup } from 'crypto';
+
 
 export const register = async(req, res) => {
     try {
@@ -113,12 +124,8 @@ export const changeAvatar = async(req, res) => {
         const user = await User.findById(req.user.id)
 
         //delete old avatar if exists
-        if(user.avatar) {
-            fs.unlink(path.join(__dirname, '..', 'uploads', user.avatar), (err) => {
-                if(err) {
-                    return res.json(err)
-                }
-            })
+        if(user.avatar && user.avatar.public_id) {
+            await cloudinary.uploader.destroy(user.avatar.public_id, { invalidate: true });
         }
 
         const {avatar} = req.files
@@ -128,22 +135,38 @@ export const changeAvatar = async(req, res) => {
             return res.status(422).json({error: "Profile picture too big. Should be less than 500kb"})
         }
         
-        let fileName = avatar.name
-        let splittedFileName = fileName.split('.')
-        let newFileName = splittedFileName[0] + uuid() + '.' + splittedFileName[splittedFileName.length - 1]
 
-        avatar.mv(path.join(__dirname, '..', 'uploads', newFileName), async(err) => {
-            if(err) {
-                return res.json(err)
+        const stream = cloudinary.uploader.upload_stream(
+            { resource_type: "image" },
+            async (error, result) => {
+                if (error) {
+                    console.error(error);
+                    return res.status(500).json({ error: "An error occurred during file upload" });
+                }
+
+                try {
+                    const updatedAvatar = await User.findByIdAndUpdate(
+                        req.user.id,
+                        { avatar: { url: result.secure_url, public_id: result.public_id } },
+                        { new: true }
+                    );
+
+                    if (!updatedAvatar) {
+                        return res.status(422).json({ error: "Avatar couldn't be changed." });
+                    }
+
+                    res.status(200).json(updatedAvatar);
+                } catch (dbError) {
+                    console.error(dbError);
+                    res.status(500).json({ error: "An error occurred while creating the post" });
+                }
             }
+        );
 
-            const updatedAvatar = await User.findByIdAndUpdate(req.user.id, {avatar: newFileName}, {new: true})
-            if(!updatedAvatar) {
-                return res.status(422).json({error: "Avatar couldn't be changed."})
-            }
-
-            res.status(200).json(updatedAvatar)
-        })
+        const readableStream = new Readable();
+        readableStream.push(avatar.data);
+        readableStream.push(null);
+        readableStream.pipe(stream);
 
     } catch (error) {
         console.log("Error in changeAvatar controller", error.message)

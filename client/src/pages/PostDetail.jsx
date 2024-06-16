@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import PostAuthor from '../Components/PostAuthor'
 import { Link, useParams } from 'react-router-dom'
-import Thumbnail from '../images/blog1.jpg'
 import { UserContext } from '../context/userContext'
 import DeletePost from './DeletePost'
 import Loader from '../Components/Loader'
@@ -54,7 +53,7 @@ const PostDetail = () => {
         <h1>{post?.title}</h1>
         
         <div className="post-detail__thumbnail">
-          <img src={`${process.env.REACT_APP_ASSETS_URL}/uploads/${post?.thumbnail}`} alt="Thumbnail" />
+          {post?.thumbnail && <img src={post.thumbnail.url} alt="Thumbnail" />}
         </div>
         <p dangerouslySetInnerHTML={{__html: post?.description}}></p>
       </div>}

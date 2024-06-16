@@ -20,8 +20,12 @@ const postSchema = new mongoose.Schema({
         required: true
     },
     thumbnail: {
-        type: String,
-        required: true
+        public_id: {
+            type: String
+        },
+        url: {
+            type: String
+        }
     }
 }, {timestamps: true})
 

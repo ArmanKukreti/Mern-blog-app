@@ -14,7 +14,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
     avatar: {
-        type: String,
+        public_id: {
+            type: String
+        },
+        url: {
+            type: String
+        }
     },
     posts: {
         type: Number,
