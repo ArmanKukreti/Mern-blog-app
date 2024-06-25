@@ -31,7 +31,8 @@ const Register = () => {
   const registerUser = async(e) => {
     e.preventDefault() 
     try {
-      const response = await axios.post(`/api/authors/register`, userData);
+      axios.defaults.withCredentials = true;
+      const response = await axios.post(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/register`, userData);
       const newUser = await response.data;
       console.log(newUser);
       navigate('/login');

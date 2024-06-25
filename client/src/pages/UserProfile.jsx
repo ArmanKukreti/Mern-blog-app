@@ -31,7 +31,8 @@ const UserProfile = () => {
 
   useEffect(() => {
     const getAuthor = async() => {
-      const response = await axios.get(`/api/authors/${currentUser._id}`, {withCredentials: true})
+      axios.defaults.withCredentials = true;
+      const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/${currentUser._id}`)
   
       const {name, email, avatar} = response.data
       setName(name)
@@ -49,7 +50,8 @@ const UserProfile = () => {
       const postData = new FormData()
       postData.set("avatar", avatar)
 
-      const response = await axios.post(`/api/authors/change-avatar`, postData, {withCredentials: true})
+      axios.defaults.withCredentials = true;
+      const response = await axios.post(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/change-avatar`, postData)
       setAvatar(response?.data.avatar)
     } catch (error) {
       console.log(error)
@@ -67,7 +69,8 @@ const UserProfile = () => {
       userData.set('newPassword', newPassword)
       userData.set('confirmNewPassword', confirmNewPassword)
 
-      const response = await axios.patch(`/api/authors/edit`, userData, {withCredentials: true})
+      axios.defaults.withCredentials = true;
+      const response = await axios.patch(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/edit`, userData)
       if(response.status == 200) {
         //logout the user
         navigate('/logout')

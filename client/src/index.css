@@ -276,6 +276,25 @@ footer {
   color: var(--color-gray-900);
 }
 
+.footer__links-title {
+  color: var(--color-white);
+  display: grid;
+  place-items: center;
+  margin-bottom: 2rem;
+}
+
+.footer__links-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: -1rem;
+}
+
+.footer__links-icons li img{
+  width: 1rem;
+  margin-bottom: 2rem;
+}
+
 .footer__copyright {
   display: flex;
   flex-direction: column;
@@ -751,7 +770,7 @@ input, select, textarea {
   display: grid;
   place-items: center;
   text-align: center;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
@@ -904,7 +923,7 @@ input, select, textarea {
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-  background-color: rgb(255,242,240);
+  /* background-color: rgb(255,242,240); */
   padding: 30px 50px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border-radius: 15px;

@@ -48,7 +48,8 @@ const EditPost = () => {
   useEffect(() => {
     const getPost = async() => {
       try {
-        const response = await axios.get(`/api/posts/${id}`)
+        axios.defaults.withCredentials = true;
+        const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/${id}`)
         setTitle(response.data.title)
 
         setDescription(response.data.description)
@@ -77,9 +78,8 @@ const EditPost = () => {
     postData.append('thumbnail', thumbnail)
 
     try {
-      const response = await axios.patch(`/api/posts/${id}`, postData, {
-        withCredentials: true
-      })
+      axios.defaults.withCredentials = true;
+      const response = await axios.patch(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/${id}`, postData)
       if (response.status == 200) {
         return navigate('/home')
       }

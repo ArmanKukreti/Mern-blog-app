@@ -22,7 +22,8 @@ const DeletePost = ({postId: id}) => {
 
     setIsLoading(true)
     try {
-      const response = await axios.delete(`/api/posts/${id}`, {withCredentials: true})
+      axios.defaults.withCredentials = true;
+      const response = await axios.delete(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/${id}`)
       if(response.status == 200) {
         if(location.pathname == `/myposts/${currentUser._id}`) {
           navigate(0) //refresh that page

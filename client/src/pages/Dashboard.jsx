@@ -24,7 +24,8 @@ const Dashboard = () => {
     const fetchPosts = async() => {
       setIsLoading(true)
       try {
-        const response = await axios.get(`/api/posts/authors/${id}`, {withCredentials: true})
+        axios.defaults.withCredentials = true;
+        const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/authors/${id}`)
         setPosts(response.data)
       } catch (error) {
         console.log(error)
@@ -50,7 +51,7 @@ const Dashboard = () => {
               <article key={post._id} className='dashboard__post'>
                 <div className='dashboard__post-info'>
                   <div className='dashboard__post-thumbnail'>
-                    <img src={`/uploads/${post.thumbnail}`} alt='Thumbnail'></img>
+                    {post.thumbnail && <img src={post.thumbnail.url} alt='Thumbnail'></img>}
                   </div>
                   <h5>{post.title}</h5>
                 </div>

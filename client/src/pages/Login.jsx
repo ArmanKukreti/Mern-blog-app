@@ -24,9 +24,8 @@ const Login = () => {
   const loginUser = async(e) => {
     e.preventDefault() 
     try {
-      const response = await axios.post(`/api/authors/login`, userData, {
-        withCredentials: true
-      });
+      axios.defaults.withCredentials = true;
+      const response = await axios.post(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/login`, userData);
       const user = await response.data;
       setCurrentUser(user)
       navigate('/home');

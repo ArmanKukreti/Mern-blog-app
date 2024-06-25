@@ -16,7 +16,8 @@ const PostAuthor = ({authorID, createdAt}) => {
   useEffect(() => {
     const getAuthor = async() => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/authors/${authorID}`)
+        axios.defaults.withCredentials = true;
+        const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/authors/${authorID}`)
         setAuthor(response?.data)
       } catch (error) {
         console.log(error)

@@ -51,9 +51,8 @@ const CreatePost = () => {
     postData.append('thumbnail', thumbnail)
 
     try {
-      const response = await axios.post(`/api/posts/create`, postData, {
-        withCredentials: true
-      })
+      axios.defaults.withCredentials = true;
+      const response = await axios.post(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/create`, postData,)
       if (response.status == 201) {
         return navigate('/home')
       }

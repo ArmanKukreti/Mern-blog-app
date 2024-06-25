@@ -91,7 +91,7 @@ const Header = () => {
                 About us
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/privacy-policy" onClick={closeNavHandler}>
                 Privacy policy
               </Link>
@@ -105,17 +105,17 @@ const Header = () => {
               <Link to="/donate" onClick={closeNavHandler}>
                 Donation
               </Link>
-            </li>
+            </li> */}
             <li>
               <Link to="/contact" onClick={closeNavHandler}>
                 Contact
               </Link>
             </li>
-            <li>
+            {/* <li>
               <Link to="/warning" onClick={closeNavHandler}>
                 Warning
               </Link>
-            </li>
+            </li> */}
           </ul>
         )}
 

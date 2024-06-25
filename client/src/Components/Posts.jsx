@@ -13,7 +13,8 @@ const Posts = () => {
         setIsLoading(true)
 
         try {
-          const response = await axios.get(`/api/posts/`)
+          axios.defaults.withCredentials = true;
+          const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/`)
           setPosts(response?.data)
 
         } catch (error) {

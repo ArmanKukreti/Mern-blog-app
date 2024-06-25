@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 const Layout = () => {
   const location = useLocation();
-  const noFooter = location.pathname === '/' || location.pathname === '/about'|| location.pathname === '/contact'|| location.pathname === '/warning'|| location.pathname === '/donate';
+  const noFooter = location.pathname === '/';
 
   return (
     <>

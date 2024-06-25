@@ -20,7 +20,8 @@ const PostDetail = () => {
       setIsLoading(true)
 
       try {
-        const response = await axios.get(`/api/posts/${id}`)
+        axios.defaults.withCredentials = true;
+        const response = await axios.get(`https://mern-blog-app-backend-f8zg.onrender.com/api/posts/${id}`)
         setPost(response?.data)
       } catch (error) {
         console.log(error)

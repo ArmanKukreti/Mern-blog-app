@@ -30,7 +30,8 @@ const Contact = () => {
         postData.append('attachment', attachment)
 
         try {
-          const response = await axios.post(`/api/contact/`, postData, {withCredentials: true})
+          axios.defaults.withCredentials = true;
+          const response = await axios.post(`https://mern-blog-app-backend-f8zg.onrender.com/api/contact/`, postData)
 
           if(response.status === 201) {
             navigate(0)
